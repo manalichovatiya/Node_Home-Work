@@ -1,10 +1,23 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const http = require("http");
 const { connectDB } = require("./db/dbconnection");
 const routes = require("./routes/inedx");
 const config = require("./config/config");
 
 const app = express();
+/**
+ * allow form-data from body
+ * form-data is use for image upload
+ * parse application/x-www-form-urlencoded
+ */
+app.use(bodyParser.urlencoded({ extended: false }));
+
+/**
+ * allow json data from body
+ * parse application/json
+ */
+app.use(bodyParser.json());
 
 /** upload image */
 // app.use(express.static(`./public`));
