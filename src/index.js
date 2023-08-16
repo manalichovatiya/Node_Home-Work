@@ -6,17 +6,6 @@ const config = require("./config/config");
 
 const app = express();
 
-/**
- * allow form-data from body
- * form-data is use for image upload
- * parse application/x-www-form-urlencoded
- */
-
-/**
- * allow json data from body
- * parse application/json
- */
-
 /** upload image */
 // app.use(express.static(`./public`));
 

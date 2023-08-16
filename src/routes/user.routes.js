@@ -11,4 +11,5 @@ router.post(
   validate(userValidation.createUser),
   userController.createUser
 );
+
 module.exports = router;
