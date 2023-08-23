@@ -1,61 +1,61 @@
-const { User } = require("../models");
+const { Users } = require("../models");
 
 /**
  * Create user
  * @param {object} reqBody
- * @returns {Promise<User>}
+ * @returns {Promise<Users>}
  */
 const createUser = async (reqBody) => {
-  return User.create(reqBody);
+  return Users.create(reqBody);
 };
 
 /**
  * Get user list
  * @param {object} filter
  * @param {object} options
- * @returns {Promise<User>}
+ * @returns {Promise<Users>}
  */
 const getUserList = async (filter, options) => {
   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return User.find(filter).skip(skip).limit(options.limit).select("-password");
+  return Users.find(filter).skip(skip).limit(options.limit).select("-password");
 };
 
 /**
  * Get user by email
  * @param {string} email
- * @returns {Promise<User>}
+ * @returns {Promise<Users>}
  */
 const getUserByEmail = async (email) => {
-  return User.findOne({ email });
+  return Users.findOne({ email });
 };
 
 /**
  * Get user details by id
  * @param {ObjectId} userId
- * @returns {Promise<User>}
+ * @returns {Promise<Users>}
  */
 const getUserById = async (userId) => {
-  return User.findById(userId);
+  return Users.findById(userId);
 };
 
 /**
  * user details update by id
  * @param {ObjectId} userId
  * @param {object} updateBody
- * @returns {Promise<User>}
+ * @returns {Promise<Users>}
  */
 const updateDetails = async (userId, updateBody) => {
-  return User.findByIdAndUpdate(userId, { $set: updateBody });
+  return Users.findByIdAndUpdate(userId, { $set: updateBody });
 };
 
 /**
  * Delete user
  * @param {ObjectId} userId
- * @returns {Promise<User>}
+ * @returns {Promise<Users>}
  */
 const deleteUser = async (userId) => {
-  return User.findByIdAndDelete(userId);
+  return Users.findByIdAndDelete(userId);
 };
 
 module.exports = {

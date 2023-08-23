@@ -10,10 +10,10 @@ const createUser = async (req, res) => {
     //   throw new Error("User already created by this email!");
     // }
 
-    // const user = await userService.createUser(reqBody);
-    // if (!user) {
-    //   throw new Error("Something went wrong, please try again or later!");
-    // }
+    const user = await userService.createUser(reqBody);
+    if (!user) {
+      throw new Error("Something went wrong, please try again or later!");
+    }
     res.status(200).json({
       success: true,
       message: "User create successfully!",
