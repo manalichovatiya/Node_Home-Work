@@ -4,7 +4,7 @@ const Joi = require("joi");
 const createJewellery = {
   body: Joi.object().keys({
     jewellery_name: Joi.string().required().trim(),
-    jewellery_price: Joi.number().integer().required().trim(),
+    jewellery_price: Joi.number().integer().required(),
     jewellery_material: Joi.string().required().trim(),
     jewellery_description: Joi.string().required().trim(),
   }),

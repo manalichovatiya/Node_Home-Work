@@ -6,7 +6,7 @@ const createSchool = {
     school_name: Joi.string().required().trim(),
     school_address: Joi.string().required().trim(),
     school_time: Joi.string().required().trim(),
-    standard: Joi.number().integer().required().trim(),
+    standard: Joi.number().integer().required(),
   }),
 };
 
