@@ -18,7 +18,8 @@ const createSchool = async (reqBody) => {
 const getSchoolList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return School.find();
+  // return School.find();
+  return School.find({$or:[{standard : 3}]});
 };
 
 /**

@@ -18,7 +18,8 @@ const createGrocery = async (reqBody) => {
 const getGroceryList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return Grocery.find();
+  // return Grocery.find();
+  return Grocery.find({$or:[{grocery_product:"Apple"},{grocery_name:"CVC"}]});
 };
 
 /**

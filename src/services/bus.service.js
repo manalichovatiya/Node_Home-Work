@@ -18,7 +18,8 @@ const createBus = async (reqBody) => {
 const getBusList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return Bus.find();
+  // return Bus.find();
+  return Bus.find({$nor:[{bus_number:"ES123"},{bus_number:"MT789"}]});
 };
 
 /**

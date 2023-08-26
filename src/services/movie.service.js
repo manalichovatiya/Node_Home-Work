@@ -18,7 +18,8 @@ const createMovie = async (reqBody) => {
 const getMovieList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return Movie.find();
+  // return Movie.find();
+  return Movie.find({$or:[{movie_director:"James Cameron"},{movie_title:"Pulp Fiction"}]});
 };
 
 /**

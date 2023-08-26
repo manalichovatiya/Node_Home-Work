@@ -18,7 +18,8 @@ const createTravel = async (reqBody) => {
 const getTravelList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return Travel.find();
+  // return Travel.find();
+  return Travel.find({$or:[{travel_by:"Airplane"},{travel_destination:"surat"}]});
 };
 
 /**

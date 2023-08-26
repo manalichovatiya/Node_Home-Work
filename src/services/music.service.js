@@ -18,7 +18,8 @@ const createMusic = async (reqBody) => {
 const getMusicList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return Music.find();
+  // return Music.find();
+  return Music.find({music_release_year:{$lt:"2010"}});
 };
 
 /**

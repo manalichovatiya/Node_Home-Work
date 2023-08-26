@@ -16,9 +16,10 @@ const createUser = async (reqBody) => {
  * @returns {Promise<Users>}
  */
 const getUserList = async (filter, options) => {
-  const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
+  // const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return Users.find(filter).skip(skip).limit(options.limit).select("-password");
+  // return Users.find();
+  return Users.find({$or:[{is_active:false}]});
 };
 
 /**

@@ -18,7 +18,8 @@ const createJewellery = async (reqBody) => {
 const getJewelleryList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return Jewellery.find();
+  // return Jewellery.find();
+  return Jewellery.find({$and:[{jewellery_name:["Ring","Sapphire and Diamond Ring"]}]});
 };
 
 /**

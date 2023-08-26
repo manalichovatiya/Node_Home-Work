@@ -18,7 +18,8 @@ const createHotel = async (reqBody) => {
 const getHotelList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  return Hotel.find();
+  // return Hotel.find();
+  return Hotel.find({$or:[{room_Price:300}]});
 };
 
 /**
