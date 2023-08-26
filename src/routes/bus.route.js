@@ -14,29 +14,13 @@ router.post(
 /** Get Bus list */
 router.get(
   "/bus-list",
-  validate(busValidation.getBusList),
   busController.getBusList
 );
-
-/** Get Bus details by id */
-// router.get(
-//     "/get-details/:busId",
-//     validate(busValidation.getDetails),
-//     busController.getBusDetails
-//   );
 
 /** Delete Bus */
 router.delete(
   "/delete-bus/:busId",
-  validate(busValidation.getDetails),
   busController.deleteBus
 );
-
-/** Send mail */
-// router.post(
-//   "/send-mail",
-//   validate(busValidation.sendMail),
-//   busController.sendMail
-// );
 
 module.exports = router;

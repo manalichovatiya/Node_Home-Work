@@ -4,12 +4,6 @@ const { musicService } = require("../services");
 const createMusic = async (req, res) => {
   try {
     const reqBody = req.body;
-
-    // const musicExists = await musicService.getMusicByEmail(reqBody.email);
-    // if (musicExists) {
-    //   throw new Error("Music already created by this email!");
-    // }
-
     const music = await musicService.createMusic(reqBody);
     if (!music) {
       throw new Error("Something went wrong, please try again or later!");
@@ -66,7 +60,6 @@ const deleteMusic = async (req, res) => {
     res.status(400).json({ success: false, message: error.message });
   }
 };
-
 
 module.exports = {
   createMusic,

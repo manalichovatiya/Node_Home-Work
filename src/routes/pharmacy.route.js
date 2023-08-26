@@ -14,29 +14,13 @@ router.post(
 /** Get Pharmacy list */
 router.get(
   "/Pharmacy-list",
-  validate(pharmacyValidation.getPharmacyList),
   pharmacyController.getPharmacyList
 );
-
-/** Get Pharmacy details by id */
-// router.get(
-//     "/get-details/:PharmacyId",
-//     validate(pharmacyValidation.getDetails),
-//     pharmacyController.getPharmacyDetails
-//   );
 
 /** Delete Pharmacy */
 router.delete(
   "/delete-Pharmacy/:PharmacyId",
-  validate(pharmacyValidation.getDetails),
   pharmacyController.deletePharmacy
 );
-
-/** Send mail */
-// router.post(
-//   "/send-mail",
-//   validate(pharmacyValidation.sendMail),
-//   pharmacyController.sendMail
-// );
 
 module.exports = router;
