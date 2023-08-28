@@ -22,5 +22,10 @@ router.delete(
   "/delete-bus/:busId",
   busController.deleteBus
 );
-
+/** Update Bus */
+router.put(
+  "/update-bus/:busId",
+  validate(busValidation.createBus),
+  busController.updateBus
+)
 module.exports = router;

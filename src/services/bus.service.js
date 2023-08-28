@@ -18,8 +18,8 @@ const createBus = async (reqBody) => {
 const getBusList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  // return Bus.find();
-  return Bus.find({$nor:[{bus_number:"ES123"},{bus_number:"MT789"}]});
+  return Bus.find();
+  // return Bus.find({$nor:[{bus_number:"ES123"},{bus_number:"MT789"}]});
 };
 
 /**
@@ -40,9 +40,18 @@ const deleteBus = async (busId) => {
   return Bus.findByIdAndDelete(busId);
 };
 
+/**Update bus
+ * @param {ObjectId} busId
+ * @returns {Promise<Bus>}
+*/
+const updateBus = async (busId,reqBody) => {
+  return Bus.findByIdAndUpdate(busId,{$set:reqBody});
+};
+
 module.exports = {
     createBus,
     getBusList,
     getBusById,
-    deleteBus
+    deleteBus,
+    updateBus
 };

@@ -38,7 +38,7 @@ const getCategoryById = async (categoryId) => {
 };
 
 /**
- * Category details update by id
+ *  update Category
  * @param {ObjectId} categoryId
  * @param {object} updateBody
  * @returns {Promise<Category>}

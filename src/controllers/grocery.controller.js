@@ -4,12 +4,6 @@ const { groceryService } = require("../services");
 const createGrocery = async (req, res) => {
   try {
     const reqBody = req.body;
-
-    // const groceryExists = await groceryService.getGroceryByEmail(reqBody.email);
-    // if (groceryExists) {
-    //   throw new Error("Grocery already created by this email!");
-    // }
-
     const grocery = await groceryService.createGrocery(reqBody);
     if (!grocery) {
       throw new Error("Something went wrong, please try again or later!");
@@ -67,9 +61,29 @@ const deleteGrocery = async (req, res) => {
   }
 };
 
+/** Update grocery */
+const updateGrocery = async (req, res) => {
+  try {
+    const reqBody = req.body;
+    const groceryId = req.params.GroceryId;
+    const groceryExists = await groceryService.getGroceryById(groceryId);
+    if (!groceryExists) {
+      throw new Error("Grocery not found!");
+    }
+    await groceryService.updateGrocery(groceryId);
+
+    res.status(200).json({
+      success: true,
+      message: "Grocery update successfully!",
+    });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
 
 module.exports = {
   createGrocery,
   getGroceryList,
-  deleteGrocery
+  deleteGrocery,
+  updateGrocery
 };
