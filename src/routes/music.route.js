@@ -11,15 +11,23 @@ router.post(
   validate(musicValidation.createMusic),
   musicController.createMusic
 );
+
 /** Get Music list */
 router.get(
   "/Music-list",
   musicController.getMusicList
 );
+
 /** Delete Music */
 router.delete(
   "/delete-Music/:MusicId",
   musicController.deleteMusic
 );
 
+/** Update Music */
+router.put(
+  "/update-Music/:MusicId",
+  validate(musicValidation.createMusic),
+  musicController.updateMusic
+)
 module.exports = router;

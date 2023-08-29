@@ -18,8 +18,8 @@ const createHotel = async (reqBody) => {
 const getHotelList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  // return Hotel.find();
-  return Hotel.find({$or:[{room_Price:300}]});
+  return Hotel.find();
+  // return Hotel.find({$or:[{room_Price:300}]});
 };
 
 /**
@@ -40,9 +40,13 @@ const deleteHotel = async (HotelId) => {
   return Hotel.findByIdAndDelete(HotelId);
 };
 
+const updateHotel = async (HotelId,reqBody) => {
+  return Hotel.findByIdAndUpdate(HotelId,{$set:reqBody});
+};
 module.exports = {
     createHotel,
     getHotelList,
     getHotelById,
-    deleteHotel
+    deleteHotel,
+    updateHotel
 };

@@ -70,7 +70,7 @@ const updateGrocery = async (req, res) => {
     if (!groceryExists) {
       throw new Error("Grocery not found!");
     }
-    await groceryService.updateGrocery(groceryId);
+    await groceryService.updateGrocery(groceryId,reqBody);
 
     res.status(200).json({
       success: true,

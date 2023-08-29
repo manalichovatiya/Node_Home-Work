@@ -23,4 +23,10 @@ router.delete(
   movieController.deleteMovie
 );
 
+/** Update Movie */
+router.put(
+  "/update-Movie/:MovieId",
+  validate(movieValidation.createMovie),
+  movieController.updateMovie
+)
 module.exports = router;

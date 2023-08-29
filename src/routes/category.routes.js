@@ -5,11 +5,27 @@ const validate = require("../middlewares/validate");
 
 const router = express.Router();
 
-/** create user */
+/** create category */
 router.post(
   "/create-category",
   validate(categoryValidation.createCategory),
   categoryController.createCategory
 );
+
+/** category list */
+router.get(
+  "/list",
+  categoryController.categoryList
+)
+
+router.delete(
+  "/delete/:categoryId",
+  categoryController.deleteRecord
+)
+
+router.put(
+  "/update-category/:categoryId",
+  categoryController.updateCategory
+)
 
 module.exports = router;

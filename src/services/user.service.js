@@ -18,8 +18,8 @@ const createUser = async (reqBody) => {
 const getUserList = async (filter, options) => {
   // const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  // return Users.find();
-  return Users.find({$or:[{is_active:false}]});
+  return Users.find();
+  // return Users.find({$or:[{is_active:false}]});
 };
 
 /**
@@ -46,8 +46,8 @@ const getUserById = async (userId) => {
  * @param {object} updateBody
  * @returns {Promise<Users>}
  */
-const updateDetails = async (userId, updateBody) => {
-  return Users.findByIdAndUpdate(userId, { $set: updateBody });
+const updateDetails = async (userId, reqBody) => {
+  return Users.findByIdAndUpdate(userId, { $set: reqBody });
 };
 
 /**

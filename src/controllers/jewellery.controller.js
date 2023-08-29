@@ -4,12 +4,6 @@ const { jewelleryService } = require("../services");
 const createJewellery = async (req, res) => {
   try {
     const reqBody = req.body;
-
-    // const jewelleryExists = await jewelleryService.getJewelleryByEmail(reqBody.email);
-    // if (jewelleryExists) {
-    //   throw new Error("Jewellery already created by this email!");
-    // }
-
     const jewellery = await jewelleryService.createJewellery(reqBody);
     if (!jewellery) {
       throw new Error("Something went wrong, please try again or later!");
@@ -67,9 +61,29 @@ const deleteJewellery = async (req, res) => {
   }
 };
 
+/** Update jewellery */
+const updateJewellery = async (req, res) => {
+  try {
+    const reqBody = req.body;
+    const jewelleryId = req.params.jewelleryId;
+    const jewelleryExists = await jewelleryService.getJewelleryById(jewelleryId);
+    if (!jewelleryExists) {
+      throw new Error("Jewellery not found!");
+    }
+    await jewelleryService.updateJewellery(jewelleryId,reqBody);
+
+    res.status(200).json({
+      success: true,
+      message: "Jewellery update successfully!",
+    });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
 
 module.exports = {
   createJewellery,
   getJewelleryList,
-  deleteJewellery
+  deleteJewellery,
+  updateJewellery
 };

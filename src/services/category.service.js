@@ -16,7 +16,7 @@ const createCategory = async (reqBody) => {
  * @returns {Promise<Category>}
  */
 const getCategoryList = async (filter,options) => {
-    const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
+    // const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
     return Category.find();
 };
 /**
@@ -43,8 +43,8 @@ const getCategoryById = async (categoryId) => {
  * @param {object} updateBody
  * @returns {Promise<Category>}
  */
-const updateDetails = async (categoryId, updateBody) => {
-  return Category.findByIdAndUpdate(categoryId, { $set: updateBody });
+const updateDetails = async (categoryId, reqBody) => {
+  return Category.findByIdAndUpdate(categoryId, { $set: reqBody });
 };
 
 /**

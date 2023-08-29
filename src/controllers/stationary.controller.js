@@ -4,12 +4,6 @@ const { stationaryService } = require("../services");
 const createStationary = async (req, res) => {
   try {
     const reqBody = req.body;
-
-    // const stationaryExists = await stationaryService.getStationaryByEmail(reqBody.email);
-    // if (stationaryExists) {
-    //   throw new Error("Stationary already created by this email!");
-    // }
-
     const stationary = await stationaryService.createStationary(reqBody);
     if (!stationary) {
       throw new Error("Something went wrong, please try again or later!");
@@ -67,9 +61,29 @@ const deleteStationary = async (req, res) => {
   }
 };
 
+/** Update stationary */
+const updateStationary = async (req, res) => {
+  try {
+    const reqBody = req.body;
+    const stationaryId = req.params.stationaryId;
+    const stationaryExists = await stationaryService.getStationaryById(stationaryId);
+    if (!stationaryExists) {
+      throw new Error("Stationary not found!");
+    }
+    await stationaryService.updateStationary(stationaryId,reqBody);
+
+    res.status(200).json({
+      success: true,
+      message: "Stationary update successfully!",
+    });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
 
 module.exports = {
   createStationary,
   getStationaryList,
-  deleteStationary
+  deleteStationary,
+  updateStationary
 };

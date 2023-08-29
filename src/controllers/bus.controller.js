@@ -70,7 +70,7 @@ const updateBus = async (req, res) => {
     if (!busExists) {
       throw new Error("Bus not found!");
     }
-    await busService.updateBus(busId);
+    await busService.updateBus(busId,reqBody);
 
     res.status(200).json({
       success: true,

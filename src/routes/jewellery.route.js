@@ -23,4 +23,11 @@ router.delete(
   jewelleryController.deleteJewellery
 );
 
+/** Update jewellery */
+router.put(
+  "/update-jewellery/:jewelleryId",
+  validate(jewelleryValidation.createJewellery),
+  jewelleryController.updatejewellery
+)
+
 module.exports = router;

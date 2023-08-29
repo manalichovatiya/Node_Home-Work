@@ -18,8 +18,8 @@ const createPharmacy = async (reqBody) => {
 const getPharmacyList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  // return Pharmacy.find();
-  return Pharmacy.find({pharmacy_product_price:{$gt:120}});
+  return Pharmacy.find();
+  // return Pharmacy.find({pharmacy_product_price:{$gt:120}});
 };
 
 /**
@@ -40,9 +40,13 @@ const deletePharmacy = async (PharmacyId) => {
   return Pharmacy.findByIdAndDelete(PharmacyId);
 };
 
+const updatePharmacy = async (PharmacyId,reqBody) => {
+  return Pharmacy.findByIdAndUpdate(PharmacyId,{$set:reqBody});
+};
 module.exports = {
     createPharmacy,
     getPharmacyList,
     getPharmacyById,
-    deletePharmacy
+    deletePharmacy,
+    updatePharmacy
 };

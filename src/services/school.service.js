@@ -18,8 +18,8 @@ const createSchool = async (reqBody) => {
 const getSchoolList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  // return School.find();
-  return School.find({$or:[{standard : 3}]});
+  return School.find();
+  // return School.find({$or:[{standard : 3}]});
 };
 
 /**
@@ -40,9 +40,13 @@ const deleteSchool = async (SchoolId) => {
   return School.findByIdAndDelete(SchoolId);
 };
 
+const updateSchool = async (SchoolId,reqBody) => {
+  return School.findByIdAndUpdate(SchoolId,{$set:reqBody});
+};
 module.exports = {
     createSchool,
     getSchoolList,
     getSchoolById,
-    deleteSchool
+    deleteSchool,
+    updateSchool
 };

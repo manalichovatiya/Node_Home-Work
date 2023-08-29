@@ -18,8 +18,8 @@ const createTravel = async (reqBody) => {
 const getTravelList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  // return Travel.find();
-  return Travel.find({$or:[{travel_by:"Airplane"},{travel_destination:"surat"}]});
+  return Travel.find();
+  // return Travel.find({$or:[{travel_by:"Airplane"},{travel_destination:"surat"}]});
 };
 
 /**
@@ -40,9 +40,13 @@ const deleteTravel = async (TravelId) => {
   return Travel.findByIdAndDelete(TravelId);
 };
 
+const updateTravel = async (TravelId,reqBody) => {
+  return Travel.findByIdAndUpdate(TravelId,{$set:reqBody});
+};
 module.exports = {
     createTravel,
     getTravelList,
     getTravelById,
-    deleteTravel
+    deleteTravel,
+    updateTravel
 };

@@ -4,13 +4,7 @@ const { userService, emailService } = require("../services");
 const createUser = async (req, res) => {
   try {
     const reqBody = req.body;
-
-    // const userExists = await userService.getUserByEmail(reqBody.email);
-    // if (userExists) {
-    //   throw new Error("User already created by this email!");
-    // }
-
-    const user = await userService.createUser(reqBody);
+  const user = await userService.createUser(reqBody);
     if (!user) {
       throw new Error("Something went wrong, please try again or later!");
     }
@@ -69,13 +63,14 @@ const getUserDetails = async (req, res) => {
 /** user details update by id */
 const updateDetails = async (req, res) => {
   try {
+    const reqBody = req.body;
     const userId = req.params.userId;
     const userExists = await userService.getUserById(userId);
     if (!userExists) {
       throw new Error("User not found!");
     }
 
-    await userService.updateDetails(userId, req.body);
+    await userService.updateDetails(userId, reqBody);
 
     res.status(200)
       .json({ success: true, message: "User details update successfully!" });

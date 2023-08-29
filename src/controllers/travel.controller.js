@@ -4,12 +4,6 @@ const { travelService } = require("../services");
 const createTravel = async (req, res) => {
   try {
     const reqBody = req.body;
-
-    // const travelExists = await travelService.getTravelByEmail(reqBody.email);
-    // if (travelExists) {
-    //   throw new Error("Travel already created by this email!");
-    // }
-
     const travel = await travelService.createTravel(reqBody);
     if (!travel) {
       throw new Error("Something went wrong, please try again or later!");
@@ -67,9 +61,29 @@ const deleteTravel = async (req, res) => {
   }
 };
 
+/** Update travel */
+const updateTravel = async (req, res) => {
+  try {
+    const reqBody = req.body;
+    const travelId = req.params.travelId;
+    const travelExists = await travelService.getTravelById(travelId);
+    if (!travelExists) {
+      throw new Error("Travel not found!");
+    }
+    await travelService.updateTravel(travelId,reqBody);
+
+    res.status(200).json({
+      success: true,
+      message: "Travel update successfully!",
+    });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
 
 module.exports = {
   createTravel,
   getTravelList,
-  deleteTravel
+  deleteTravel,
+  updateTravel
 };

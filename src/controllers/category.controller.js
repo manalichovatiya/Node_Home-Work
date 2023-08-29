@@ -70,7 +70,7 @@ const updateCategory = async (req, res) => {
     if (!categoryExists) {
       throw new Error("Category not found!");
     }
-    await categoryService.updateCategory(categoryId);
+    await categoryService.updateDetails(categoryId,reqBody);
 
     res.status(200).json({
       success: true,

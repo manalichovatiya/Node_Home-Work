@@ -1,15 +1,8 @@
 const { pharmacyService } = require("../services");
-
 /** create pharmacy */
 const createPharmacy = async (req, res) => {
   try {
     const reqBody = req.body;
-
-    // const pharmacyExists = await pharmacyService.getPharmacyByEmail(reqBody.email);
-    // if (pharmacyExists) {
-    //   throw new Error("Pharmacy already created by this email!");
-    // }
-
     const pharmacy = await pharmacyService.createPharmacy(reqBody);
     if (!pharmacy) {
       throw new Error("Something went wrong, please try again or later!");
@@ -67,9 +60,29 @@ const deletePharmacy = async (req, res) => {
   }
 };
 
+/** Update pharmacy */
+const updatePharmacy = async (req, res) => {
+  try {
+    const reqBody = req.body;
+    const pharmacyId = req.params.pharmacyId;
+    const pharmacyExists = await pharmacyService.getPharmacyById(pharmacyId);
+    if (!pharmacyExists) {
+      throw new Error("Pharmacy not found!");
+    }
+    await pharmacyService.updatePharmacy(pharmacyId,reqBody);
+
+    res.status(200).json({
+      success: true,
+      message: "Pharmacy update successfully!",
+    });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
 
 module.exports = {
   createPharmacy,
   getPharmacyList,
-  deletePharmacy
+  deletePharmacy,
+  updatePharmacy
 };

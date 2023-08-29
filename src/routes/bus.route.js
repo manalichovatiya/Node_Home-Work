@@ -22,6 +22,7 @@ router.delete(
   "/delete-bus/:busId",
   busController.deleteBus
 );
+
 /** Update Bus */
 router.put(
   "/update-bus/:busId",

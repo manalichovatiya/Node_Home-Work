@@ -18,8 +18,8 @@ const createMusic = async (reqBody) => {
 const getMusicList = async (filter, options) => {
 //   const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
 
-  // return Music.find();
-  return Music.find({music_release_year:{$lt:"2010"}});
+  return Music.find();
+  // return Music.find({music_release_year:{$lt:"2010"}});
 };
 
 /**
@@ -39,10 +39,13 @@ const getMusicById = async (MusicId) => {
 const deleteMusic = async (MusicId) => {
   return Music.findByIdAndDelete(MusicId);
 };
-
+const updateMusic = async (MusicId,reqBody) => {
+  return Music.findByIdAndUpdate(MusicId,{$set:reqBody});
+};
 module.exports = {
     createMusic,
     getMusicList,
     getMusicById,
-    deleteMusic
+    deleteMusic,
+    updateMusic
 };

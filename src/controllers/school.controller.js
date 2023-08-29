@@ -4,12 +4,6 @@ const { schoolService } = require("../services");
 const createSchool = async (req, res) => {
   try {
     const reqBody = req.body;
-
-    // const schoolExists = await schoolService.getSchoolByEmail(reqBody.email);
-    // if (schoolExists) {
-    //   throw new Error("School already created by this email!");
-    // }
-
     const school = await schoolService.createSchool(reqBody);
     if (!school) {
       throw new Error("Something went wrong, please try again or later!");
@@ -67,9 +61,29 @@ const deleteSchool = async (req, res) => {
   }
 };
 
+/** Update school */
+const updateSchool = async (req, res) => {
+  try {
+    const reqBody = req.body;
+    const schoolId = req.params.schoolId;
+    const schoolExists = await schoolService.getSchoolById(schoolId);
+    if (!schoolExists) {
+      throw new Error("School not found!");
+    }
+    await schoolService.updateSchool(schoolId,reqBody);
+
+    res.status(200).json({
+      success: true,
+      message: "School update successfully!",
+    });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+};
 
 module.exports = {
   createSchool,
   getSchoolList,
-  deleteSchool
+  deleteSchool,
+  updateSchool
 };
