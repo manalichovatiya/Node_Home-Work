@@ -11,3 +11,4 @@ module.exports.Pharmacy = require("./pharmacy");
 module.exports.School = require("./school");
 module.exports.Stationary = require("./stationary");
 module.exports.Travel = require("./travel");
+module.exports.Mobile = require("./mobile");
