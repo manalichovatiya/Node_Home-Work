@@ -15,12 +15,12 @@ router.post(
 /** category list */
 router.get(
   "/list",
-  categoryController.categoryList
+  categoryController.getCategoryList
 )
 
 router.delete(
   "/delete/:categoryId",
-  categoryController.deleteRecord
+  categoryController.deleteCategory
 )
 
 router.put(

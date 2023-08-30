@@ -31,7 +31,7 @@ router.put(
   mobileController.updateMobile
 );
 
-/** Update Mobile's status */
+/** Update Mobile status */
 router.put(
     "/update-status/:mobileId",
     validate(mobileValidation.createMobile),

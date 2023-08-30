@@ -1,57 +1,32 @@
 const { Category } = require("../models");
 
-/**
- * category
- * @param {object} reqBody
- * @returns {Promise<Category>}
- */
+// category
 const createCategory = async (reqBody) => {
   return Category.create(reqBody);
 };
 
-/**
- * Get category list
- * @param {object} filter
- * @param {object} options
- * @returns {Promise<Category>}
- */
+// Get category list
 const getCategoryList = async (filter,options) => {
     // const skip = (Number(options.page || 1) - 1) * Number(options.limit || 10);
     return Category.find();
 };
-/**
- * Get Category by name
- * @param {string} category_name
- * @returns {Promise<Category>}
- */
+
+// Get Category by name
 const getCategoryByName = async (category_name) => {
   return Category.findOne({ category_name });
 };
 
-/**
- * Get Category details by id
- * @param {ObjectId} categoryId
- * @returns {Promise<Category>}
- */
+// Get Category details by id
 const getCategoryById = async (categoryId) => {
   return Category.findById(categoryId);
 };
 
-/**
- *  update Category
- * @param {ObjectId} categoryId
- * @param {object} updateBody
- * @returns {Promise<Category>}
- */
+// update Category
 const updateDetails = async (categoryId, reqBody) => {
   return Category.findByIdAndUpdate(categoryId, { $set: reqBody });
 };
 
-/**
- * Delete user
- * @param {ObjectId} categoryId
- * @returns {Promise<Category>}
- */
+// Delete user
 const deleteCategory = async (categoryId) => {
   return Category.findByIdAndDelete(categoryId);
 };
