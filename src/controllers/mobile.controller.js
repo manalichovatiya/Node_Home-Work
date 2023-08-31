@@ -23,7 +23,6 @@ const getMobileList = async (req, res) => {
   try {
     const { search, ...options } = req.query;
     let filter = {};
-
     if (search) {
       filter.$or = [
         { mobile_shop_name: { $regex: search, $options: "i" } },
@@ -100,7 +99,8 @@ const updateMobileStatus = async (req, res) => {
     } catch (error) {
       res.status(400).json({ success: false, message: error.message });
     }
-  };
+};
+
 module.exports = {
   createMobile,
   getMobileList,
