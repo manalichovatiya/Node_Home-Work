@@ -17,7 +17,7 @@ const travelSchema = new mongoose.Schema(
             type : String,
             trim : true,
         },
-        bus : {
+        bus: {
             type: mongoose.Types.ObjectId,
             ref: "Bus",
         },
