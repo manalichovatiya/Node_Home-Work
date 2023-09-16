@@ -6,7 +6,7 @@ const auth = require("../middlewares/auth");
 
 const router = express.Router();
 
-/** Create jsonwebtoken */
+/** Create token */
 router.post(
   "/create-token",
   validate(tokenValidation.generateToken),
