@@ -13,6 +13,9 @@ const stationaryRoute = require("./stationary.route");
 const travelRoute = require("./travel.route");
 const mobileRoute = require("./mobile.route");
 const tokenRoute = require("./token.route");
+const bannerRoute = require("./banner.route");
+const productRoute = require("./product.route");
+
 
 const router = express.Router();
 
@@ -30,5 +33,7 @@ router.use("/stationary", stationaryRoute);
 router.use("/travel", travelRoute);
 router.use("/mobile", mobileRoute);
 router.use("/token", tokenRoute);
+router.use("/banner", bannerRoute);
+router.use("/product", productRoute);
 
 module.exports = router;

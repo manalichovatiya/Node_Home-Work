@@ -12,4 +12,6 @@ module.exports.stationaryValidation = require("./stationary.validation");
 module.exports.travelValidation = require("./travel.validation");
 module.exports.mobileValidation = require("./mobile.validation");
 module.exports.tokenValidation = require("./token.validation");
+module.exports.bannerValidation = require("./banner.validation");
+module.exports.productValidation = require("./product.validation");
 

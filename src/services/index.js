@@ -12,3 +12,5 @@ module.exports.stationaryService = require("./stationary.service");
 module.exports.travelService = require("./travel.service");
 module.exports.mobileService = require("./mobile.service");
 module.exports.tokenService = require("./token.service");
+module.exports.bannerService = require("./banner.service");
+module.exports.productService = require("./product.service");

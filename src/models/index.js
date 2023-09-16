@@ -13,3 +13,4 @@ module.exports.Stationary = require("./stationary");
 module.exports.Travel = require("./travel");
 module.exports.Mobile = require("./mobile");
 module.exports.Token = require("./token");
+module.exports.Banner = require("./banner");
