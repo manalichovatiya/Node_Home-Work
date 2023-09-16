@@ -12,7 +12,7 @@ const generateToken = async (req, res) => {
     reqBody.token = token;
 
     // Save token
-    const savetoken = await tokenService.savetoken(reqBody);
+    const savetoken = await tokenService.saveToken(reqBody);
     res
       .status(200)
       .json({ success: true, message: "Token created ! ", data: savetoken });
